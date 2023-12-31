@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.banner {
+  margin-top: 67px;
+  height: 423px;
+  background-image: url("https://i.postimg.cc/1Xs6MK3v/home-banner2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.banner h2 {
+  padding-top: 70px;
+  font-size: 37px;
+}
+.banner p {
+  font-size: 20px;
+  margin-top: 13px;
+}
+.banner button {
+  font-size: 25px;
+  padding: 1px 26px;
+  border-radius: 20px;
+  border: navajowhite;
+  margin-top: 32px;
+}
+
+@media (max-width: 600px) {
+  .banner h2 {
+    font-size: 24px;
+  }
+
+  .banner p {
+    font-size: 16px;
+  }
+
+  .banner button {
+    font-size: 16px;
+  }
+}

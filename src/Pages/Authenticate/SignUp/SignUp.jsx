@@ -1,6 +1,44 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import auth from "../../../firebase/firebase";
+
+import { useState } from "react";
+import { toast } from "react-toastify";
+
 import "./SignUp.css";
 
 export default function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPAssword] = useState();
+
+  const signUpHandel = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      return toast.error("Password doesn't match");
+    }
+    if (!name || !email || !password || !confirmPassword) {
+      return toast.error("Emty Input");
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        toast.success("Account created successfully!");
+
+        // ...
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPAssword("");
+  };
+
   return (
     <div className="signup-container">
       <div className="card">
@@ -11,11 +49,31 @@ export default function SignUp() {
           </span>
         </div>
         <div className="form">
-          <form action="/register" method="post">
-            <input type="text" name="username" placeholder="Full Name" />
-            <input type="email" name="email" placeholder="Email" id="email" />
-            <input type="password" name="password" placeholder="Password" />
+          <form onSubmit={signUpHandel} action="/register" method="post">
             <input
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Full Name"
+            />
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Email"
+            />
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              value={password}
+              name="password"
+              placeholder="Password"
+            />
+            <input
+              onChange={(e) => setConfirmPAssword(e.target.value)}
+              value={confirmPassword}
               type="password"
               name="confirmPassword"
               placeholder="Confirm your Password"
