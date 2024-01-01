@@ -18,7 +18,7 @@ export default function Header() {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/card">Card</NavLink>
+              <NavLink to="/jobs">Jobs</NavLink>
             </li>
             <li>
               <NavLink to="/about">About</NavLink>
@@ -35,7 +35,9 @@ export default function Header() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="login">Log In</NavLink>
+              <NavLink to="login">
+                <button>Log In</button>
+              </NavLink>
             </li>
           </ul>
           <h1 className="logo">Halal Job</h1>

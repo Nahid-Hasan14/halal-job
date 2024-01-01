@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function User({ news }) {
-  console.log(news);
+export default function User() {
+  console.log();
   return <div>User</div>;
 }

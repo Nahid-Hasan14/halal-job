@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import About from "../Pages/Home/About";
 import SignUp from "../Pages/Authenticate/SignUp/SignUp";
 import LogIn from "../Pages/Authenticate/LogIn/LogIn";
+import Jobs from "../Pages/Jobs/Jobs";
 
 const routes = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/jobs",
+        element: <Jobs />,
       },
     ],
   },

@@ -17,10 +17,33 @@
   box-shadow: gray 3px 5px 5px;
   border-radius: 10px;
 }
+.dataCart h3 {
+  font-size: 15px;
+}
 .latestJobs {
   text-align: center;
   margin-top: 40px;
+  margin-bottom: 25px;
   font-size: 42px;
+}
+.latestJobs span {
+  padding: 5px 69px;
+  background: pink;
+  border-radius: 39px;
+  box-shadow: gray 5px 5px 5px;
+}
+
+.details-btn {
+  justify-content: space-around;
+  display: flex;
+  margin-top: 15px;
+}
+.details-btn button {
+  padding: 3px 8px;
+  font-size: 16px;
+  background: rgb(230, 126, 34);
+  border-radius: 7px;
+  border: none;
 }
 .seeBtn {
   align-items: center;
