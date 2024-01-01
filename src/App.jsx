@@ -1,9 +1,9 @@
-import Home from "./Pages/Home/Home";
+import MainLayout from "./MainLayout/MainLayout";
 
 export default function App() {
   return (
     <div>
-      <Home />
+      <MainLayout />
     </div>
   );
 }

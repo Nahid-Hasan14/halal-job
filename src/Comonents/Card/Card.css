@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.card-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: pink;
+  gap: 20px;
+}
+.dataCart {
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: center;
+  background-color: white;
+  box-shadow: gray 3px 5px 5px;
+  border-radius: 10px;
+}
+.latestJobs {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 42px;
+}
+.seeBtn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.seeBtn button {
+  padding: 3px 49px;
+  font-size: 25px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}

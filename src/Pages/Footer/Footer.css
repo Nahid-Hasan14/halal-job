@@ -1,3 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@300&family=Rubik:wght@400;500;700&display=swap");
+
+:root {
+  --light: #ffffff;
+  --dark: #000;
+}
+
+.footerbody {
+  font-family: "Rubik", sans-serif;
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.newsletter h3 {
+  font-family: "Noto Serif Display", serif;
+  font-size: 2.3rem;
+  font-weight: 300;
+  text-align: center; /* Move text-align here */
+}
+
+.c-nav-tool_list li a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 400;
+  transition: 0.3s ease-in;
+  border-bottom: 1px solid transparent;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+}
+
+.c-nav-tool_list li a:hover {
+  border-bottom: 1px solid var(--dark);
+}
+
+.c-nav-tool_list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer_inner {
+  background: var(--light);
+  backdrop-filter: blur(50px);
+  border: 0.1px solid rgba(233, 232, 232, 0.208);
+  border-radius: 5px;
+  padding: 0rem;
+  margin: 5rem 0;
+}
+
 .footer {
-  margin-top: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+}
+
+@media (min-width: 675px) {
+  .layout {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 2rem;
+  }
+  .w-50 {
+    width: 50%;
+  }
+  .w-25 {
+    width: 25%;
+  }
+}
+
+.footer_copyright {
+  color: var(--light);
 }
