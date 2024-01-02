@@ -1,8 +1,10 @@
 import React from "react";
 // import Card from "../../Comonents/Card/Card";
 import useJsonCmHook from "../../Comonents/Card/useJsonCmHook";
-import PostData from "../PostData/PostData";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+import "./Jobs.css";
+import axios from "axios";
 
 export default function Jobs() {
   const { data, isLoading, error } = useJsonCmHook(
@@ -10,7 +12,16 @@ export default function Jobs() {
   );
   //   const fiveData = data && data.slice(0, 5);
   //   const fiveData = data && slice ? data.slice(0, 5) : data;
-
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:9000/jobs/${id}`);
+      console.log(response.data);
+      // Handle the response data here (usually empty for a successful delete)
+    } catch (error) {
+      console.error("Error deleting data:", error);
+      // Handle errors here
+    }
+  };
   const loadingMessage = <p>Data is Loading...</p>;
   const errorMessage = <p>{error}</p>;
 
@@ -29,8 +40,10 @@ export default function Jobs() {
               <b>Position: </b> {news.position}
             </p>
             <div className="details-btn">
-              <button>Details</button>
-              <button>Apply Now</button>
+              <Link to={`/jobdetails/${news.id}`}>
+                <button>Details</button>
+              </Link>
+              <button onClick={() => handleDelete(news.id)}>Delete</button>
             </div>
           </div>
         </>
@@ -47,11 +60,11 @@ export default function Jobs() {
           {error && errorMessage}
           {isLoading && loadingMessage}
           {allJobCard}
-          <div className="">
-            <NavLink to="/postdata">
-              <button>Add New Job</button>
-            </NavLink>
-          </div>
+        </div>
+        <div className="add-new-job container">
+          <NavLink to="/postdata">
+            <button>Add New Job</button>
+          </NavLink>
         </div>
       </div>
     </>

@@ -38,15 +38,22 @@
   display: flex;
 }
 .menu-items button {
-  padding: 0px 17px;
+  padding: 3px 17px;
   font-size: 20px;
   border-radius: 5px;
   background: #e67e22;
+  color: #fff;
+  border: 2px solid #ccc;
+}
+.menu-items button:hover {
+  color: #e67e22;
+  background-color: #fff;
 }
 .logo {
   order: 1;
   font-size: 2.3rem;
   margin-top: 0px;
+  color: #000000d9;
 }
 
 .menu-items li {
@@ -152,7 +159,7 @@
 
   .logo {
     position: absolute;
-    top: 10px;
+    top: 3px;
     right: 50px;
     font-size: 2.5rem;
     color: #d2691e;

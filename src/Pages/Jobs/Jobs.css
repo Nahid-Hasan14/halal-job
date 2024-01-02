@@ -1,0 +1,13 @@
+/* baki css gulla Card.css theke ase .akoi class name use korar karone automaticali css pay. ekhane sudhu Add New Job Button er css cora */
+.add-new-job button {
+  padding: 7px 15px;
+  font-size: 18px;
+  background: #e67e22;
+  border-radius: 10px;
+  border: none;
+}
+.add-new-job {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}

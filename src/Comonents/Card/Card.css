@@ -17,6 +17,11 @@
   box-shadow: gray 3px 5px 5px;
   border-radius: 10px;
 }
+.dataCart img {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
 .dataCart h3 {
   font-size: 15px;
 }

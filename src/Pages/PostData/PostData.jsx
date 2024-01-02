@@ -31,6 +31,13 @@ export default function PostData() {
     } catch (error) {
       console.error("Error posting data:", error);
     }
+    setPostData({
+      title: "",
+      logo: "",
+      companyName: "",
+      position: "",
+      description: "",
+    });
   };
   return (
     <div className="postData container">
@@ -45,15 +52,17 @@ export default function PostData() {
             name="title"
             value={postData.title}
             placeholder="Title"
+            required
           />{" "}
           <br />
           <h4>Logo:</h4>
           <input
             onChange={handelChange}
-            type="text"
+            type="url"
             name="logo"
             value={postData.logo}
-            placeholder="Logo"
+            placeholder="Img url here"
+            required
           />{" "}
           <br />
           <h4>Company Name:</h4>
@@ -63,6 +72,7 @@ export default function PostData() {
             name="companyName"
             value={postData.companyName}
             placeholder="Company Name"
+            required
           />{" "}
           <br />
           <h4>Position:</h4>
@@ -81,6 +91,7 @@ export default function PostData() {
             name="description"
             value={postData.description}
             placeholder="Description"
+            required
           />{" "}
           <br />
           <button type="submit ">Add New Job</button>
