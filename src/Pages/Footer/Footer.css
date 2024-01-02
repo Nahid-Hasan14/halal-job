@@ -1,73 +1,75 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@300&family=Rubik:wght@400;500;700&display=swap");
-
-:root {
-  --light: #ffffff;
-  --dark: #000;
-}
-
-.footerbody {
-  font-family: "Rubik", sans-serif;
-  margin: auto;
+body {
+  margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+.footerMain {
+  background-color: #333;
+  margin-top: 50px;
 }
 
-.newsletter h3 {
-  font-family: "Noto Serif Display", serif;
-  font-size: 2.3rem;
-  font-weight: 300;
-  text-align: center; /* Move text-align here */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
 }
 
-.c-nav-tool_list li a {
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 400;
-  transition: 0.3s ease-in;
-  border-bottom: 1px solid transparent;
-  margin-bottom: 0.5rem;
-  display: inline-flex;
+.footer-section {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
-.c-nav-tool_list li a:hover {
-  border-bottom: 1px solid var(--dark);
+.footer-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
-.c-nav-tool_list {
+.footer-section p {
+  margin: 0;
+}
+
+.footer-section ul {
   list-style-type: none;
   padding: 0;
 }
 
-.footer_inner {
-  background: var(--light);
-  backdrop-filter: blur(50px);
-  border: 0.1px solid rgba(233, 232, 232, 0.208);
-  border-radius: 5px;
-  padding: 0rem;
-  margin: 5rem 0;
+.footer-section a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
 }
 
-.footer {
-  position: relative;
+.footer-section a:hover {
+  color: #e67e22;
+}
+/* Add styles for social icons */
+.social-icons {
   display: flex;
-  align-items: center;
-  min-height: 60vh;
+  gap: 10px;
 }
 
-@media (min-width: 675px) {
-  .layout {
-    display: flex;
-    flex-wrap: nowrap;
-    column-gap: 2rem;
-  }
-  .w-50 {
-    width: 50%;
-  }
-  .w-25 {
-    width: 25%;
-  }
+.reactLogo {
+  font-size: 35px;
 }
 
-.footer_copyright {
-  color: var(--light);
+.social-icons a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 768px) {
+  .footer-section {
+    width: 30%;
+  }
 }

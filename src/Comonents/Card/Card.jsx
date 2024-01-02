@@ -1,11 +1,14 @@
+/* eslint-disable react/prop-types */
 import "./Card.css";
 import useJsonCmHook from "./useJsonCmHook";
+import { Link, NavLink } from "react-router-dom";
 
-export default function Card() {
+export default function Card({ slice }) {
   const { data, isLoading, error } = useJsonCmHook(
     "http://localhost:9000/jobs"
   );
-  const fiveData = data && data.slice(0, 5);
+  // const fiveData = data && data.slice(0, 5);
+  const fiveData = data && slice ? data.slice(0, 5) : data;
 
   const loadingMessage = <p>Data is Loading...</p>;
   const errorMessage = <p>{error}</p>;
@@ -25,7 +28,9 @@ export default function Card() {
               <b>Position: </b> {news.position}
             </p>
             <div className="details-btn">
-              <button>Details</button>
+              <Link to={`/jobdetails/${news.id}`}>
+                <button>Details</button>
+              </Link>
               <button>Apply Now</button>
             </div>
           </div>
@@ -45,7 +50,9 @@ export default function Card() {
           {allJobCard}
 
           <div className="seeBtn">
-            <button className="job-all-btn">Explore All</button>
+            <NavLink to="/jobs">
+              <button className="job-all-btn">Explore All</button>
+            </NavLink>
           </div>
         </div>
       </div>

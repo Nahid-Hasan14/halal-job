@@ -5,19 +5,19 @@
 }
 .banner {
   margin-top: 67px;
-  height: 423px;
+  height: 450px;
   background-image: url("https://i.postimg.cc/1Xs6MK3v/home-banner2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .banner h2 {
-  padding-top: 70px;
+  padding-top: 100px;
   font-size: 37px;
 }
 .banner p {
   font-size: 20px;
-  margin-top: 13px;
+  margin-top: 5px;
 }
 .banner button {
   font-size: 25px;

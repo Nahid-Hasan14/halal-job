@@ -31,7 +31,7 @@ export default function Header() {
             </li>
             <li>
               <NavLink to="signup">
-                <button>Signup</button>
+                <button>SignUp</button>
               </NavLink>
             </li>
             <li>

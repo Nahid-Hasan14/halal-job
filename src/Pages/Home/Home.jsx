@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="Prents">
       <Banner />
-      <Card />
+      <Card slice={true} />
     </div>
   );
 }
