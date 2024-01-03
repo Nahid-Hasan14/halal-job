@@ -7,6 +7,7 @@ import LogIn from "../Pages/Authenticate/LogIn/LogIn";
 import Jobs from "../Pages/Jobs/Jobs";
 import PostData from "../Pages/PostData/PostData";
 import JobDetails from "../Pages/Jobs/JobDetails";
+import Contact from "../Pages/Contact/Contact";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
       {
         path: "/postdata",
         element: <PostData />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/jobdetails/:id",
