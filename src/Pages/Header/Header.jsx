@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import "./Header.css";
+import auth from "../../firebase/firebase";
 
 export default function Header() {
+  const [user] = useAuthState(auth);
   return (
     <div className="">
       <nav className="navbar">
@@ -30,9 +33,15 @@ export default function Header() {
               <NavLink to="/favorite">Favorite</NavLink>
             </li>
             <li>
-              <NavLink to="signup">
-                <button>SignUp</button>
-              </NavLink>
+              {user ? (
+                <NavLink to="login">
+                  <button>Sign Out</button>
+                </NavLink>
+              ) : (
+                <NavLink to="signup">
+                  <button>SignUp</button>
+                </NavLink>
+              )}
             </li>
             <li>
               <NavLink to="login">

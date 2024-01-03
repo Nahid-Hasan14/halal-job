@@ -26,6 +26,10 @@
   border: navajowhite;
   margin-top: 32px;
 }
+.banner button:hover {
+  background: blue;
+  color: white;
+}
 
 @media (max-width: 600px) {
   .banner h2 {

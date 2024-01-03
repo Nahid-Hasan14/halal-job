@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useState } from "react";
 import "./PostData.css";
+import { toast } from "react-toastify";
 
 export default function PostData() {
   const [postData, setPostData] = useState({
@@ -31,6 +33,7 @@ export default function PostData() {
     } catch (error) {
       console.error("Error posting data:", error);
     }
+
     setPostData({
       title: "",
       logo: "",
@@ -38,6 +41,8 @@ export default function PostData() {
       position: "",
       description: "",
     });
+
+    return toast("Add Job Succesfully");
   };
   return (
     <div className="postData container">

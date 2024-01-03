@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 // import Card from "../../Comonents/Card/Card";
 import useJsonCmHook from "../../Comonents/Card/useJsonCmHook";

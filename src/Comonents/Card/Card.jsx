@@ -5,11 +5,9 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Card() {
   const { data, isLoading, error } = useJsonCmHook(
-    "/src/LocalData/LocalData.json"
+    "http://localhost:9000/jobs"
   );
-  const fiveData = Array.isArray(data) ? data.slice(0, 5) : [];
-  // console.log(data);
-  // const fiveData = data && data.slice(0, 5);
+  const fiveData = data && data.slice(0, 5);
   // const fiveData = data && slice ? data.slice(0, 5) : data;
 
   const loadingMessage = <p>Data is Loading...</p>;
