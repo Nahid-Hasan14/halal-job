@@ -18,16 +18,16 @@ export default function Footer() {
             <h2>Quick Links</h2>
             <ul>
               <li>
-                <a href="#">Home</a>
+                <a href="home">Home</a>
               </li>
               <li>
-                <a href="#">About Us</a>
+                <a href="about">About Us</a>
               </li>
               <li>
                 <a href="#">Services</a>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="contact">Contact</a>
               </li>
             </ul>
           </div>

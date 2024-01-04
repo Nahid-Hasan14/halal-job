@@ -2,36 +2,19 @@ import {
   useAuthState,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+
 import "./LogIn.css";
 import auth from "../../../firebase/firebase";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export default function LogIn() {
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-  const [user] = useAuthState(auth);
+  const [signInWithEmailAndPassword, user] =
+    useSignInWithEmailAndPassword(auth);
+
   console.log(user);
 
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       // User is signed in
-  //       // toast.success(`Log In Successfully`);
-  //       naviget("/");
-  //     } else {
-  //       // User is signed out
-  //       if (!initialRender.current) {
-  //         toast.error("You don't have an account. Please sign up");
-  //       }
-  //     }
-  //     // Set initial render to false after the first call to onAuthStateChanged
-  //     initialRender.current = false;
-  //   });
-
-  //   return () => unsubscribe();
-  // }, []);
 
   const signInHandle = async (e) => {
     e.preventDefault();
