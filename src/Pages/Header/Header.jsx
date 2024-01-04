@@ -48,15 +48,25 @@ export default function Header() {
             <li>
               <NavLink to="/favorite">Favorite</NavLink>
             </li>
-
-            <li>
+            <li className="signup-profile">
               {user ? (
-                <NavLink to="login">
-                  <button>SignUp</button>
-                </NavLink>
+                // If user is signed in, display user image and name
+                <>
+                  <div className="photo">
+                    <NavLink to="/">
+                      {user ? (
+                        <img src={user.photoURL} alt="User" />
+                      ) : (
+                        <p>ppp</p>
+                      )}
+                    </NavLink>
+                    <p>{user.displayName}</p>
+                  </div>
+                </>
               ) : (
-                <NavLink to="signup">
-                  <button>SignUp</button>
+                // If user is not signed in, display SignUp button
+                <NavLink to="/signup">
+                  <button>Sign Up</button>
                 </NavLink>
               )}
             </li>
@@ -70,12 +80,6 @@ export default function Header() {
                   <button>Log In</button>
                 </NavLink>
               )}
-            </li>
-
-            <li>
-              <NavLink>
-                <img src="" alt="" />
-              </NavLink>
             </li>
           </ul>
           <h1 className="logo">Halal Job</h1>

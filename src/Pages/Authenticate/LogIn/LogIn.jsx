@@ -1,33 +1,37 @@
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import "./LogIn.css";
 import auth from "../../../firebase/firebase";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function LogIn() {
-  const [signInWithEmailAndPassword, user] =
-    useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [user] = useAuthState(auth);
+  console.log(user);
 
-  const naviget = useNavigate();
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in
-        // toast.success(`Log In Successfully`);
-        naviget("/");
-      } else {
-        // User is signed out
-        if (!initialRender.current) {
-          toast.error("You don't have an account. Please sign up");
-        }
-      }
-      // Set initial render to false after the first call to onAuthStateChanged
-      initialRender.current = false;
-    });
+  const navigate = useNavigate();
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       // User is signed in
+  //       // toast.success(`Log In Successfully`);
+  //       naviget("/");
+  //     } else {
+  //       // User is signed out
+  //       if (!initialRender.current) {
+  //         toast.error("You don't have an account. Please sign up");
+  //       }
+  //     }
+  //     // Set initial render to false after the first call to onAuthStateChanged
+  //     initialRender.current = false;
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
   const signInHandle = async (e) => {
     e.preventDefault();
@@ -39,6 +43,8 @@ export default function LogIn() {
       e.target.email.value = "";
       e.target.password.value = "";
       console.log(user);
+      toast.success("Login successful!");
+      navigate("/");
     } catch (error) {
       // Handle errors here
       console.error("Error during sign up:", error.message);

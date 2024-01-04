@@ -60,6 +60,7 @@
   list-style: none;
   margin-left: 1.5rem;
   font-size: 1.3rem;
+  margin-top: 13px px;
 }
 
 .navbar a {
@@ -68,7 +69,19 @@
   font-weight: 500;
   transition: color 0.3s ease-in-out;
 }
-
+.signup-profile {
+}
+.photo {
+  display: flex;
+}
+.photo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.photo p {
+  margin-left: 10px;
+}
 .navbar a:hover {
   color: #e67e22;
 }

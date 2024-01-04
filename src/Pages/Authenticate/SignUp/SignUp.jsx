@@ -62,7 +62,7 @@ export default function SignUp() {
       e.target.confirmPassword.value = "";
 
       toast.success("Sign up succeeded. Thank you!");
-      naviget("/login");
+      naviget("/");
     } catch (error) {
       // Handle errors here
       console.error("Error during sign up:", error.message);
@@ -76,6 +76,8 @@ export default function SignUp() {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Sign Uped");
+        naviget("/");
       })
       .catch((error) => {
         console.log(error);
