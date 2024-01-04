@@ -37,6 +37,15 @@
 .card_title h1 {
   font-size: 26px;
   font-weight: bold;
+  color: #4796ff;
+}
+.sign-up-with {
+  display: flex;
+  justify-content: space-around;
+  margin: 13px 0px;
+}
+.sign-up-with button {
+  padding: 3px 8px;
 }
 
 .form input {

@@ -34,7 +34,7 @@
 .latestJobs span {
   padding: 5px 69px;
   background: pink;
-  border-radius: 39px;
+  border-radius: 57px 0px;
   box-shadow: gray 5px 5px 5px;
 }
 
@@ -50,6 +50,11 @@
   border-radius: 7px;
   border: none;
 }
+.details-btn button:hover {
+  color: #e67e22;
+  background: #fff;
+  border: 1px solid #ccc;
+}
 .seeBtn {
   align-items: center;
   display: flex;
@@ -63,6 +68,9 @@
   background: #e67e22;
   border: 1px solid;
   box-shadow: gray 5px 5px 5px;
+}
+.seeBtn button:hover {
+  color: #fff;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,4 +1,3 @@
-// import { createUserWithEmailAndPassword } from "firebase/auth";
 // import auth from "../../../firebase/firebase";
 // import { useState } from "react";
 // import { toast } from "react-toastify";
@@ -11,6 +10,17 @@ import auth from "../../../firebase/firebase";
 
 import "./SignUp.css";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 
 export default function SignUp() {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -18,33 +28,68 @@ export default function SignUp() {
       sendEmailVerification: true, //send email for verification
     });
 
-  const signUpHandel = (e) => {
-    e.preventDefault();
+  const [updateProfile, updating] = useUpdateProfile(auth);
 
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const confirmPassword = e.target.confirmPassword.value;
-    // console.log(name, email, password, confirmPassword);
+  const naviget = useNavigate();
 
-    if (password !== confirmPassword) {
-      return toast.error("Password dosn't match");
+  const signUpHandel = async (e) => {
+    try {
+      e.preventDefault();
+
+      const file = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const confirmPassword = e.target.confirmPassword.value;
+      // console.log(name, email, password, confirmPassword);
+
+      if (password !== confirmPassword) {
+        return toast.error("Password dosn't match");
+      }
+      if (!file || !email || !password || !confirmPassword) {
+        return toast.error("Please fill up input");
+      }
+
+      await createUserWithEmailAndPassword(email, password);
+      console.log(user);
+      // await updateProfile({ displayName: name });
+      await updateProfile({ photoURL: file });
+
+      // User creation successful
+
+      e.target.name.value = "";
+      e.target.email.value = "";
+      e.target.password.value = "";
+      e.target.confirmPassword.value = "";
+
+      toast.success("Sign up succeeded. Thank you!");
+      naviget("/");
+    } catch (error) {
+      // Handle errors here
+      console.error("Error during sign up:", error.message);
+      toast.error("An error occurred during sign up. Please try again.");
     }
-    if (!name || !email || !password || !confirmPassword) {
-      return toast.error("Please fill up input");
-    }
+  };
 
-    const user = createUserWithEmailAndPassword(email, password);
+  const googleHandle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    if (user) {
-      return toast.error("You hae already an account. please Log in");
-    }
-
-    e.target.name.value = "";
-    e.target.email.value = "";
-    e.target.password.value = "";
-    e.target.confirmPassword.value = "";
-    return toast.success("Sign up Successed. Thank You!");
+  const gitHubHandle = () => {
+    signInWithPopup(auth, gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -52,29 +97,41 @@ export default function SignUp() {
       <div className="card">
         <div className="card_title">
           <h1>Create Account</h1>
-          <span>
+          <div className="sign-up-with">
+            <button onClick={googleHandle}>
+              Sign Up with-
+              <FaGoogle />
+            </button>
+            <button onClick={gitHubHandle}>
+              Sign Up with-
+              <FaGithub />
+            </button>
+          </div>
+          <p>
             Already have an account? <a href="login">Log In</a>
-          </span>
+          </p>
         </div>
         <div className="form">
           <form onSubmit={signUpHandel} action="/register" method="post">
             <input type="text" name="name" placeholder="Full Name" />
             <input type="email" name="email" placeholder="Email" />
             <input type="password" name="password" placeholder="Password" />
+
             <input
               type="password"
               name="confirmPassword"
               placeholder="Confirm your Password"
             />
+
             <button>Sign Up</button>
           </form>
         </div>
-        <div className="card_terms">
+        {/* <div className="card_terms">
           <input type="checkbox" name="" id="terms" />
           <span>
             I have read and agree to the <a href="">Terms of Service</a>
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

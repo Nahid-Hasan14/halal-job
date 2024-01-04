@@ -6,6 +6,7 @@ import auth from "../../firebase/firebase";
 
 export default function Header() {
   const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <div className="">
       <nav className="navbar">
@@ -35,7 +36,8 @@ export default function Header() {
             <li>
               {user ? (
                 <NavLink to="login">
-                  <button>Sign Out</button>
+                  <img src={user.photoURL} alt="" />
+                  <p>{user.name}</p>
                 </NavLink>
               ) : (
                 <NavLink to="signup">
