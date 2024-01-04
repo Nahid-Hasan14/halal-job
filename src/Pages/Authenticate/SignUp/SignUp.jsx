@@ -36,7 +36,7 @@ export default function SignUp() {
     try {
       e.preventDefault();
 
-      const file = e.target.name.value;
+      const name = e.target.name.value;
       const email = e.target.email.value;
       const password = e.target.password.value;
       const confirmPassword = e.target.confirmPassword.value;
@@ -45,14 +45,14 @@ export default function SignUp() {
       if (password !== confirmPassword) {
         return toast.error("Password dosn't match");
       }
-      if (!file || !email || !password || !confirmPassword) {
+      if (!name || !email || !password || !confirmPassword) {
         return toast.error("Please fill up input");
       }
 
       await createUserWithEmailAndPassword(email, password);
       console.log(user);
-      // await updateProfile({ displayName: name });
-      await updateProfile({ photoURL: file });
+      await updateProfile({ displayName: name });
+      // await updateProfile({ photoURL:  });
 
       // User creation successful
 
@@ -62,7 +62,7 @@ export default function SignUp() {
       e.target.confirmPassword.value = "";
 
       toast.success("Sign up succeeded. Thank you!");
-      naviget("/");
+      naviget("/login");
     } catch (error) {
       // Handle errors here
       console.error("Error during sign up:", error.message);
@@ -70,6 +70,7 @@ export default function SignUp() {
     }
   };
 
+  //google sign up handle
   const googleHandle = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -81,6 +82,7 @@ export default function SignUp() {
       });
   };
 
+  //GitHib sign up handle
   const gitHubHandle = () => {
     signInWithPopup(auth, gitHubProvider)
       .then((result) => {
@@ -108,7 +110,8 @@ export default function SignUp() {
             </button>
           </div>
           <p>
-            Already have an account? <a href="login">Log In</a>
+            Already have an account?{" "}
+            <a onClick={() => naviget("/login")}>Log In</a>
           </p>
         </div>
         <div className="form">

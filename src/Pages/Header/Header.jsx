@@ -1,12 +1,27 @@
-import { NavLink } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
 import "./Header.css";
 import auth from "../../firebase/firebase";
+import { toast } from "react-toastify";
 
 export default function Header() {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   console.log(user);
+
+  const [signOut, loading, error] = useSignOut(auth);
+
+  const logOutHandle = async () => {
+    try {
+      await signOut();
+      toast.success("You are signed out");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error during sign out:", error.message);
+      toast.error("An error occurred during sign out. Please try again.");
+    }
+  };
   return (
     <div className="">
       <nav className="navbar">
@@ -33,11 +48,11 @@ export default function Header() {
             <li>
               <NavLink to="/favorite">Favorite</NavLink>
             </li>
+
             <li>
               {user ? (
                 <NavLink to="login">
-                  <img src={user.photoURL} alt="" />
-                  <p>{user.name}</p>
+                  <button>SignUp</button>
                 </NavLink>
               ) : (
                 <NavLink to="signup">
@@ -46,8 +61,20 @@ export default function Header() {
               )}
             </li>
             <li>
-              <NavLink to="login">
-                <button>Log In</button>
+              {user ? (
+                <NavLink to="/login">
+                  <button onClick={logOutHandle}>Log Out</button>
+                </NavLink>
+              ) : (
+                <NavLink to="/login">
+                  <button>Log In</button>
+                </NavLink>
+              )}
+            </li>
+
+            <li>
+              <NavLink>
+                <img src="" alt="" />
               </NavLink>
             </li>
           </ul>
